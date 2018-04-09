@@ -14,11 +14,11 @@ if !has("gui_running") && &t_Co < 256
 endif
 
 if ! exists("g:monokai_gui_italic")
-    let g:monokai_gui_italic = 1
+  let g:monokai_gui_italic = 1
 endif
 
 if ! exists("g:monokai_term_italic")
-    let g:monokai_term_italic = 0
+  let g:monokai_term_italic = 0
 endif
 
 let g:monokai_termcolors = 256 " does not support 16 color term right now.
@@ -57,43 +57,43 @@ function! s:h(group, style)
     let l:ctermbg = (has_key(a:style, "bg") ? a:style.bg.cterm : "NONE")
   end
   execute "highlight" a:group
-    \ "guifg="   (has_key(a:style, "fg")      ? a:style.fg.gui   : "NONE")
-    \ "guibg="   (has_key(a:style, "bg")      ? a:style.bg.gui   : "NONE")
-    \ "guisp="   (has_key(a:style, "sp")      ? a:style.sp.gui   : "NONE")
-    \ "gui="     (!empty(s:guiformat) ? s:guiformat   : "NONE")
-    \ "ctermfg=" . l:ctermfg
-    \ "ctermbg=" . l:ctermbg
-    \ "cterm="   (!empty(s:ctermformat) ? s:ctermformat   : "NONE")
+        \ "guifg="   (has_key(a:style, "fg")      ? a:style.fg.gui   : "NONE")
+        \ "guibg="   (has_key(a:style, "bg")      ? a:style.bg.gui   : "NONE")
+        \ "guisp="   (has_key(a:style, "sp")      ? a:style.sp.gui   : "NONE")
+        \ "gui="     (!empty(s:guiformat) ? s:guiformat   : "NONE")
+        \ "ctermfg=" . l:ctermfg
+        \ "ctermbg=" . l:ctermbg
+        \ "cterm="   (!empty(s:ctermformat) ? s:ctermformat   : "NONE")
 endfunction
 
 " Palettes
 " --------
 
 
-let s:white       = { "gui": "#E8E8E3", "cterm": "252" }
-let s:black       = { "gui": "#272822", "cterm": "234" }
-let s:lightblack  = { "gui": "#2D2E27", "cterm": "235" }
+let s:white       = { "gui": "#e8e8e3", "cterm": "252" }
+let s:black       = { "gui": "#121212", "cterm": "233" }
+let s:lightblack  = { "gui": "#2d2e27", "cterm": "235" }
 let s:lightblack2 = { "gui": "#383a3e", "cterm": "236" }
-let s:darkblack   = { "gui": "#211F1C", "cterm": "233" }
-let s:grey        = { "gui": "#8F908A", "cterm": "243" }
+let s:darkblack   = { "gui": "#211f1c", "cterm": "233" }
+let s:grey        = { "gui": "#8f908a", "cterm": "243" }
 let s:lightgrey   = { "gui": "#575b61", "cterm": "237" }
 let s:darkgrey    = { "gui": "#64645e", "cterm": "239" }
-let s:warmgrey    = { "gui": "#75715E", "cterm": "59" }
+let s:warmgrey    = { "gui": "#75715e", "cterm": "59"  }
 
-let s:pink        = { "gui": "#F92772", "cterm": "197" }
-let s:green       = { "gui": "#A6E22D", "cterm": "148" }
-let s:aqua        = { "gui": "#66d9ef", "cterm": "81" }
-let s:yellow      = { "gui": "#E6DB74", "cterm": "186" }
-let s:orange      = { "gui": "#FD9720", "cterm": "208" }
+let s:pink        = { "gui": "#f92772", "cterm": "197" }
+let s:green       = { "gui": "#afd700", "cterm": "148" }
+let s:aqua        = { "gui": "#66d9ef", "cterm": "81"  }
+let s:yellow      = { "gui": "#d7d75f", "cterm": "185" }
+let s:orange      = { "gui": "#fd9720", "cterm": "208" }
 let s:purple      = { "gui": "#ae81ff", "cterm": "141" }
 let s:red         = { "gui": "#e73c50", "cterm": "196" }
-let s:darkred     = { "gui": "#5f0000", "cterm": "52" }
+let s:darkred     = { "gui": "#5f0000", "cterm": "52"  }
 
 let s:addfg       = { "gui": "#d7ffaf", "cterm": "193" }
-let s:addbg       = { "gui": "#5f875f", "cterm": "65" }
+let s:addbg       = { "gui": "#5f875f", "cterm": "65"  }
 let s:delbg       = { "gui": "#f75f5f", "cterm": "167" }
 let s:changefg    = { "gui": "#d7d7ff", "cterm": "189" }
-let s:changebg    = { "gui": "#5f5f87", "cterm": "60" }
+let s:changebg    = { "gui": "#5f5f87", "cterm": "60"  }
 
 " Highlighting 
 " ------------
@@ -109,7 +109,7 @@ call s:h("StatusLineNC",  { "fg": s:darkgrey,   "bg": s:warmgrey,     "format": 
 call s:h("TabLine",       { "fg": s:white,      "bg": s:darkblack,    "format": "reverse" })
 call s:h("Visual",        {                     "bg": s:lightgrey })
 call s:h("Search",        { "fg": s:black,      "bg": s:yellow })
-call s:h("MatchParen",    { "fg": s:black,      "bg": s:purple })
+call s:h("MatchParen",    {                                           "format": "underline"})
 call s:h("Question",      { "fg": s:yellow })
 call s:h("ModeMsg",       { "fg": s:yellow })
 call s:h("MoreMsg",       { "fg": s:yellow })
@@ -141,6 +141,15 @@ call s:h("Pmenu",         { "fg": s:lightblack, "bg": s:white })
 call s:h("PmenuSel",      { "fg": s:aqua,       "bg": s:black,        "format": "reverse,bold" })
 call s:h("PmenuThumb",    { "fg": s:lightblack, "bg": s:grey })
 "        PmenuSbar"
+"
+
+" IndentLine Cusomization
+let g:indentLine_color_dark    = 1
+let g:indentLine_color_term    = s:lightblack.cterm - 1
+let g:indentLine_bgcolor_term  = s:black.cterm
+let g:indentLine_concealcursor = 'inc'
+let g:indentLine_cwnceallevwl  = 2
+
 
 " Generic Syntax Highlighting
 " ---------------------------
@@ -156,10 +165,10 @@ call s:h("Type",          { "fg": s:aqua })
 call s:h("Structure",     { "fg": s:aqua })
 call s:h("StorageClass",  { "fg": s:aqua })
 call s:h("Typedef",       { "fg": s:aqua })
-    
-call s:h("Identifier",    { "fg": s:green })
+
+call s:h("Identifier",    { "fg": s:aqua })
 call s:h("Function",      { "fg": s:green })
-                         
+
 call s:h("Statement",     { "fg": s:pink })
 call s:h("Operator",      { "fg": s:pink })
 call s:h("Label",         { "fg": s:pink })
@@ -173,7 +182,7 @@ call s:h("Include",       { "fg": s:pink })
 call s:h("Define",        { "fg": s:pink })
 call s:h("Macro",         { "fg": s:green })
 call s:h("PreCondit",     { "fg": s:green })
-                           
+
 call s:h("Special",       { "fg": s:purple })
 call s:h("SpecialChar",   { "fg": s:pink })
 call s:h("Delimiter",     { "fg": s:pink })
@@ -183,7 +192,7 @@ call s:h("Tag",           { "fg": s:pink })
 
 call s:h("Todo",          { "fg": s:orange,   "format": "bold,italic" })
 call s:h("Comment",       { "fg": s:warmgrey, "format": "italic" })
-                         
+
 call s:h("Underlined",    { "fg": s:green })
 call s:h("Ignore",        {})
 call s:h("Error",         { "fg": s:red, "bg": s:darkred })
@@ -232,7 +241,7 @@ call s:h("jsFuncArgRest",       { "fg": s:purple, "format": "italic" })
 call s:h("jsFuncArgs",          { "fg": s:orange, "format": "italic" })
 call s:h("jsStorageClass",      { "fg": s:aqua })
 call s:h("jsDocTags",           { "fg": s:aqua,   "format": "italic" })
-                                 
+
 " Html
 call s:h("htmlTag",             { "fg": s:white })
 call s:h("htmlEndTag",          { "fg": s:white })
@@ -292,9 +301,16 @@ call s:h("rubyBlockParameter",          { "fg": s:orange })
 call s:h("erubyDelimiter",              {})
 call s:h("erubyRailsMethod",            { "fg": s:aqua })
 
+" Elixir
+highlight link elixirStringDelimiter String
+call s:h("elixirModuleDeclaration",                 { "fg": s:green } )
+call s:h("elixirModuleDeclaration",                 { "fg": s:green } )
+call s:h("elixirAlias",                             { "fg": s:green } )
+" call s:h("elixirArguments",                         { "fg": s:orange })
+
 " c
 call s:h("cLabel",                      { "fg": s:pink })
 call s:h("cStructure",                  { "fg": s:pink })
-call s:h("cStorageClass",               { "fg": s:pink })
-call s:h("cInclude",                    { "fg": s:green })
-call s:h("cDefine",                     { "fg": s:green })
+call s:h("cstorageclass",               { "fg": s:pink })
+call s:h("cinclude",                    { "fg": s:green })
+call s:h("cdefine",                     { "fg": s:green })
