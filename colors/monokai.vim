@@ -306,7 +306,7 @@ highlight link elixirStringDelimiter String
 call s:h("elixirModuleDeclaration",                 { "fg": s:green } )
 call s:h("elixirModuleDeclaration",                 { "fg": s:green } )
 call s:h("elixirAlias",                             { "fg": s:green } )
-call s:h("elixirInterpolationDelimiter",            { "fg": s:orange} )
+call s:h("elixirInterpolationDelimiter",            { "fg": s:yellow } )
 " call s:h("elixirArguments",                         { "fg": s:orange })
 
 " c
